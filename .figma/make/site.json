@@ -1,0 +1,10 @@
+{
+  "description": "Automates project setup and deployment verification for imported applications, streamlining initialization while flagging critical issues and preparing deployment infrastructure.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

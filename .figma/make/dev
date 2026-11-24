@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+export PORT="${PORT:-8080}"
+
+if [ ! -f target/cp.txt ] || [ ! -d target/classes ]; then
+  ./.figma/make/install
+fi
+
+JAVA_BIN="$(mise which java)"
+CLASSPATH_VAL="target/classes:$(cat target/cp.txt)"
+
+exec "$JAVA_BIN" -XX:-UseContainerSupport -Dfile.encoding=UTF-8 -cp "$CLASSPATH_VAL" com.mall.server.EmbeddedTomcatServer

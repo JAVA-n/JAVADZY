@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MVN_FLAGS=(
+  -s maven-settings.xml
+  -Djava.net.useSystemProxies=true
+  -Dmaven.resolver.transport=wagon
+  -Dmaven.wagon.http.ssl.insecure=true
+  -Dmaven.wagon.http.ssl.allowall=true
+)
+
+mise exec -- mvn -q "${MVN_FLAGS[@]}" compile \
+  -DargLine="-XX:-UseContainerSupport" \
+  org.apache.maven.plugins:maven-dependency-plugin:3.6.1:build-classpath \
+  -Dmdep.outputFile=target/cp.txt

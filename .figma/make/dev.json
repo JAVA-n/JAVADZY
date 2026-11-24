@@ -1,0 +1,8 @@
+{
+  "installOn": [
+    "pom.xml",
+    "maven-settings.xml",
+    "src/main/java/**",
+    "src/main/resources/**"
+  ]
+}
